@@ -26,7 +26,7 @@ class Upload extends Component {
 		event.preventDefault();
 		const target = event.target;
 		const value = target.value;
-		//const name = target.name;
+		const name = target.name;
 
 		this.setState({ name: value });
 	}
@@ -66,7 +66,7 @@ class Upload extends Component {
 
 		let targetImage = UID + '.png';
 		const response = await fetch(
-			'https://31gv9av7oe.execute-api.us-west-1.amazonaws.com/Production/ocr',
+			'https://b6spjdux6d.execute-api.us-east-1.amazonaws.com/Production/ocr',
 			{
 				method: 'POST',
 				headers: {
