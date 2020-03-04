@@ -2,23 +2,34 @@
 // import { createWorker } from 'tesseract.js';
 // import './index.css';
 import React from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import {
+	Route,
+	BrowserRouter as Router,
+	Switch,
+	Redirect
+} from 'react-router-dom';
 
-import Upload from './Upload';
+import Upload from './components/Upload';
 import MainNavigation from './shared/Navigation/MainNavigation';
 
-import { Main } from './App.styles';
+import { Main, GlobalStyle } from './App.styles';
 
 const App = () => {
+	let Routes;
+
+	Routes = (
+		<Switch>
+			<Route path='/' exact component={Upload} />
+			<Redirect to='/' />
+		</Switch>
+	);
+
 	return (
-		<BrowserRouter>
+		<Router>
 			<MainNavigation />
-			<Switch>
-				<Main>
-					<Route path='/' exact component={Upload} />
-				</Main>
-			</Switch>
-		</BrowserRouter>
+			<Main>{Routes}</Main>
+			<GlobalStyle />
+		</Router>
 	);
 };
 

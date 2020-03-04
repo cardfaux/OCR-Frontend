@@ -1,12 +1,14 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
+import { DarkMediumGray } from './styles/Colors';
+
 export const Main = styled.main`
 	margin-top: 7rem;
 `;
 
 export const GlobalStyle = createGlobalStyle`
 	body {
-		background: #4d4d4d;
+		background: ${DarkMediumGray};
 	}
 	html {
 	font-family: 'Open Sans', sans-serif;
