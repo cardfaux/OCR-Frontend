@@ -26,7 +26,7 @@ class Upload extends Component {
 		event.preventDefault();
 		const target = event.target;
 		const value = target.value;
-		const name = target.name;
+		//const name = target.name;
 
 		this.setState({ name: value });
 	}
