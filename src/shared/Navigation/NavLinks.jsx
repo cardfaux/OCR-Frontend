@@ -1,40 +1,55 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { AuthContext } from '../../context/auth-context';
-import './NavLinks.css';
+import { AuthContext } from '../Context/auth-context';
+import { Navigation, ListItem, Button } from './NavLinks.styles';
 
 const NavLinks = (props) => {
 	const auth = useContext(AuthContext);
 
 	return (
-		<ul className='nav-links'>
-			<li>
+		<Navigation>
+			<ListItem>
+				<a href='!#'>
+					{auth.isLoggedIn ? `Hello ${auth.userName}` : 'Hello Guest'}
+				</a>
+			</ListItem>
+			<ListItem>
 				<NavLink to='/' exact>
 					ALL USERS
 				</NavLink>
-			</li>
+			</ListItem>
+			<ListItem>
+				<NavLink to='/posts' exact>
+					ALL POSTS
+				</NavLink>
+			</ListItem>
 			{auth.isLoggedIn && (
-				<li>
+				<ListItem>
 					<NavLink to={`/${auth.userId}/places`}>MY PLACES</NavLink>
-				</li>
+				</ListItem>
 			)}
 			{auth.isLoggedIn && (
-				<li>
+				<ListItem>
 					<NavLink to='/places/new'>ADD PLACE</NavLink>
-				</li>
+				</ListItem>
+			)}
+			{auth.isLoggedIn && (
+				<ListItem>
+					<NavLink to='/posts/new'>ADD POST</NavLink>
+				</ListItem>
 			)}
 			{!auth.isLoggedIn && (
-				<li>
+				<ListItem>
 					<NavLink to='/auth'>AUTHENTICATE</NavLink>
-				</li>
+				</ListItem>
 			)}
 			{auth.isLoggedIn && (
-				<li>
-					<button onClick={auth.logout}>LOGOUT</button>
-				</li>
+				<ListItem>
+					<Button onClick={auth.logout}>LOGOUT</Button>
+				</ListItem>
 			)}
-		</ul>
+		</Navigation>
 	);
 };
 

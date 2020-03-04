@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSpring, animated } from 'react-spring';
 
 import MainHeader from './MainHeader';
 import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
-import Backdrop from '../UIElements/Backdrop';
-import './MainNavigation.css';
+import Backdrop from '../UIElements/BackDrop';
+import { Hamburger, Title, Nav, DrawerNav } from './MainNavigation.styles.js';
 
-const MainNavigation = (props) => {
+const MainNavigation = () => {
+	const fade = useSpring({
+		from: {
+			opacity: 0
+		},
+		to: {
+			opacity: 1
+		}
+	});
+
 	const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
 	const openDrawerHandler = () => {
@@ -22,26 +32,25 @@ const MainNavigation = (props) => {
 		<React.Fragment>
 			{drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
 			<SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
-				<nav className='main-navigation__drawer-nav'>
+				<DrawerNav>
 					<NavLinks />
-				</nav>
+				</DrawerNav>
 			</SideDrawer>
 
 			<MainHeader>
-				<button
-					className='main-navigation__menu-btn'
-					onClick={openDrawerHandler}
-				>
-					<span />
-					<span />
-					<span />
-				</button>
-				<h1 className='main-navigation__title'>
-					<Link to='/'>YourPlaces</Link>
-				</h1>
-				<nav className='main-navigation__header-nav'>
+				<Hamburger onClick={openDrawerHandler}>
+					<animated.span style={fade} />
+					<animated.span style={fade} />
+					<animated.span style={fade} />
+				</Hamburger>
+				<animated.div style={fade}>
+					<Title>
+						<Link to='/'>React-OCR</Link>
+					</Title>
+				</animated.div>
+				<Nav>
 					<NavLinks />
-				</nav>
+				</Nav>
 			</MainHeader>
 		</React.Fragment>
 	);
