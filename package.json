@@ -20,7 +20,9 @@
     "react-moment": "^0.9.7",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "react-transition-group": "^4.3.0",
     "reactstrap": "^8.4.1",
+    "styled-components": "^5.0.1",
     "tesseract.js": "^2.0.2"
   },
   "scripts": {
