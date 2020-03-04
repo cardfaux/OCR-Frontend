@@ -3,26 +3,25 @@ import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 
 import Backdrop from './Backdrop';
+import { ModalContainer, ModalHeader, ModalContent } from './Modal.styles';
 
 const ModalOverlay = (props) => {
 	const content = (
-		<div className={`modal ${props.className}`} style={props.style}>
-			<header className={`modal__header ${props.headerClass}`}>
+		<ModalContainer className={`${props.className}`} style={props.style}>
+			<ModalHeader className={`${props.headerClass}`}>
 				<h2>{props.header}</h2>
-			</header>
+			</ModalHeader>
 			<form
 				onSubmit={
 					props.onSubmit ? props.onSubmit : (event) => event.preventDefault()
 				}
 			>
-				<div className={`modal__content ${props.contentClass}`}>
+				<ModalContent className={`${props.contentClass}`}>
 					{props.children}
-				</div>
-				<footer className={`modal__footer ${props.footerClass}`}>
-					{props.footer}
-				</footer>
+				</ModalContent>
+				<footer className={`${props.footerClass}`}>{props.footer}</footer>
 			</form>
-		</div>
+		</ModalContainer>
 	);
 	return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
 };
