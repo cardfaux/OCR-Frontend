@@ -14,12 +14,15 @@ import { White, Melon, Black } from '../../../styles/Colors';
 import { BoxShadow2 } from '../../../styles/Shadows';
 
 const BuyerUpload = (props) => {
-	const [imageState, setImageState] = useForm({
-		image: {
-			value: null,
-			isValid: false
-		}
-	});
+	const [imageState, setImageState] = useForm(
+		{
+			image: {
+				value: null,
+				isValid: false
+			}
+		},
+		false
+	);
 	const [formState, inputHandler] = useForm(
 		// Initial Inputs For The useForm Hook
 		{
@@ -68,7 +71,7 @@ const BuyerUpload = (props) => {
 		false
 	);
 
-	const invoiceSubmitHandler = (event) => {
+	const imageSubmitHandler = (event) => {
 		event.preventDefault();
 		console.log(imageState.inputs);
 	};
@@ -79,13 +82,13 @@ const BuyerUpload = (props) => {
 
 	return (
 		<React.Fragment>
-			<form className={props.className} onSubmit={invoiceSubmitHandler}>
+			<form className={props.className} onSubmit={imageSubmitHandler}>
 				<ImageUpload center id='image' onInput={setImageState} />
 				<Button
 					className='button'
 					style={{ margin: '1rem' }}
 					type='submit'
-					disabled={false}
+					disabled={!imageState.isValid}
 				>
 					Process File
 				</Button>
