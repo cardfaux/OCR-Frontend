@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Card from '../../shared/UIElements/Card';
+import BuyerCard from '../../components/HomePage/BuyerCard/BuyerCard';
+import SellerCard from '../../components/HomePage/SellerCard/SellerCard';
 
 const HomePage = () => {
 	return (
 		<div>
-			<Card>
-				<h1>Buyer</h1>
-			</Card>
+			<BuyerCard />
+			<SellerCard />
 		</div>
 	);
 };
