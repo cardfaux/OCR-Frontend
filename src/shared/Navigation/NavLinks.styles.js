@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Black, White, DarkBlueGrey, Melon } from '../../styles/Colors';
+import { Black, White, Melon } from '../../styles/Colors';
 
 export const Navigation = styled.ul`
 	list-style: none;
