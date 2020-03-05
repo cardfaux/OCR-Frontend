@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { DarkMediumGray } from './styles/Colors';
+import { DarkMediumGray, MediumTurquoise } from './styles/Colors';
 
 export const Main = styled.main`
 	margin-top: 7rem;
@@ -8,7 +8,7 @@ export const Main = styled.main`
 
 export const GlobalStyle = createGlobalStyle`
 	body {
-		background: ${DarkMediumGray};
+		background: ${MediumTurquoise};
 	}
 	html {
 	font-family: 'Open Sans', sans-serif;

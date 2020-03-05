@@ -20,8 +20,8 @@ const NavLinks = (props) => {
 				</NavLink>
 			</ListItem>
 			<ListItem>
-				<NavLink to='/posts' exact>
-					ALL POSTS
+				<NavLink to='/buyer' exact>
+					BUYER
 				</NavLink>
 			</ListItem>
 			{auth.isLoggedIn && (

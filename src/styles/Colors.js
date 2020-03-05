@@ -20,6 +20,7 @@ export const Platinum = '#e6e6ea';
 //----- BLUES------
 export const DarkBlueGrey = '#6c6ea0';
 export const MayaBlue = '#66C7F4';
+export const MyBlue = 'rgba(0, 203, 255, 1)';
 
 //---- GREENS------
 export const Turquoise = '#2de1c2';
@@ -32,3 +33,6 @@ export const AwesomeRed = '#ff1053';
 
 //----- YELLOWS-----
 export const Yellow = '#f8df00';
+
+//------PINKS------
+export const Melon = '#fcb0b3';
