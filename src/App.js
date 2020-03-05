@@ -9,7 +9,8 @@ import {
 	Redirect
 } from 'react-router-dom';
 
-import Upload from './components/Upload';
+import UploadPage from './pages/UploadPage/UploadPage';
+import HomePage from './pages/HomePage/HomePage';
 import MainNavigation from './shared/Navigation/MainNavigation';
 
 import { Main, GlobalStyle } from './App.styles';
@@ -19,7 +20,8 @@ const App = () => {
 
 	Routes = (
 		<Switch>
-			<Route path='/' exact component={Upload} />
+			<Route path='/' exact component={HomePage} />
+			<Route path='/buyer' exact component={UploadPage} />
 			<Redirect to='/' />
 		</Switch>
 	);
