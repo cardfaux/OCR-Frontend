@@ -10,10 +10,12 @@ const ImageUpload = (props) => {
 
 	const filePickerRef = useRef();
 
+	// Should Trigger When The File Changes
 	useEffect(() => {
 		if (!file) {
 			return;
 		}
+		// FileReader is a built in API
 		const fileReader = new FileReader();
 		fileReader.onload = () => {
 			setPreviewUrl(fileReader.result);
@@ -24,15 +26,19 @@ const ImageUpload = (props) => {
 	const pickedHandler = (event) => {
 		let pickedFile;
 		let fileIsValid = isValid;
+		// You get the files on the event.target if it is a native file picker
+		// Ensures There has be only 1 File to Fire
 		if (event.target.files && event.target.files.length === 1) {
+			// Get the first and only file picked
 			pickedFile = event.target.files[0];
 			setFile(pickedFile);
-			setIsValid(true);
+			setIsValid(true); //Dosent update the state immideantly so set i manually
 			fileIsValid = true;
 		} else {
 			setIsValid(false);
 			fileIsValid = false;
 		}
+		// Get onInput Prop Pointing to a Function
 		props.onInput(props.id, pickedFile, fileIsValid);
 	};
 
@@ -47,7 +53,7 @@ const ImageUpload = (props) => {
 				ref={filePickerRef}
 				style={{ display: 'none' }}
 				type='file'
-				accept='.jpg,.png,.jpeg'
+				accept='.jpg,.png,.jpeg,.pdf'
 				onChange={pickedHandler}
 			/>
 			<div className={`image-upload ${props.center && 'center'}`}>
