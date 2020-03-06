@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useForm } from '../../../shared/Hooks/form-hook';
+import { useHttpClient } from '../../../shared/Hooks/http-hook';
 import {
 	VALIDATOR_REQUIRE,
 	VALIDATOR_MINLENGTH
@@ -14,6 +15,8 @@ import { White, Melon, Black } from '../../../styles/Colors';
 import { BoxShadow2 } from '../../../styles/Shadows';
 
 const BuyerUpload = (props) => {
+	const { isLoading, error, sendRequest, clearError } = useHttpClient();
+
 	const [imageState, setImageState] = useForm(
 		{
 			image: {
@@ -71,10 +74,19 @@ const BuyerUpload = (props) => {
 		false
 	);
 
-	const imageSubmitHandler = (event) => {
-		event.preventDefault();
-		console.log(imageState.inputs);
+	// Send Image To Backend
+	const imageSubmitHandler = async (event) => {
+		try {
+			const formData = new FormData();
+			formData.append('image', imageState.inputs.image.value);
+			const responseData = await sendRequest(
+				`${process.env.REACT_APP_BACKEND_URL}/invoice`,
+				'POST',
+				formData
+			);
+		} catch (err) {}
 	};
+	// Send The Whole Form To The Backend
 	const formSubmitHandler = (event) => {
 		event.preventDefault();
 		console.log(formState.inputs);
