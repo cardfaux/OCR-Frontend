@@ -76,6 +76,7 @@ const BuyerUpload = (props) => {
 
 	// Send Image To Backend
 	const imageSubmitHandler = async (event) => {
+		event.preventDefault();
 		try {
 			const formData = new FormData();
 			formData.append('image', imageState.inputs.image.value);
@@ -84,6 +85,7 @@ const BuyerUpload = (props) => {
 				'POST',
 				formData
 			);
+			console.log(responseData.invoiceNumber);
 		} catch (err) {}
 	};
 	// Send The Whole Form To The Backend
