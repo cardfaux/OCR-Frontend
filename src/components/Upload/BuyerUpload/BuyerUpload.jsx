@@ -85,7 +85,7 @@ const BuyerUpload = (props) => {
 				'POST',
 				formData
 			);
-			console.log(responseData.invoiceNumber);
+			console.log(responseData);
 		} catch (err) {}
 	};
 	// Send The Whole Form To The Backend
